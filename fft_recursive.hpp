@@ -1,6 +1,5 @@
 #ifndef FFT_REC_INCLUDED
 #define FFT_REC_INCLUDED
-#include "dft.hpp"
 
 #include <iostream>
 #include <complex>
@@ -8,9 +7,6 @@
 #include <vector>
 using namespace std;
 
-//O(nlogn)
-//memorijski neefiksano
-//pretpostavlja da je duzina vektora stepen dvojke
 vector<complex<double>> fft_rec(const vector<complex<double>> &X) {
 	if (X.size()==1) {
 		return X;
@@ -41,6 +37,7 @@ vector<complex<double>> fft_rec(const vector<complex<double>> &X) {
 	return Y;
 }
 
+/*
 vector<complex<double>> fft(const vector<complex<double>> &X) {
 	size_t size = 1;
 	while (size<X.size()) {
@@ -60,15 +57,5 @@ vector<complex<double>> fft(const vector<complex<double>> &X) {
 	
 	return Y;
 }
-
-int main() {
-	vector<complex<double>> X{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
-
-	vector<complex<double>> Y1 = dft(X);
-	vector<complex<double>> Y2 = fft(X);
-
-	for (size_t i=0; i<Y1.size(); i++) {
-		cout << Y1[i] << " " << Y2[i] << endl;
-	}
-}
+*/
 #endif //FFT_REC_INCLUDED

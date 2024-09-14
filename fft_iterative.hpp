@@ -1,6 +1,5 @@
 #ifndef FFT_ITER_INCLUDED
 #define FFT_ITER_INCLUDED
-#include "dft.hpp"
 
 #include <iostream>
 #include <complex>
@@ -27,7 +26,7 @@ size_t flip_binary(size_t x, size_t len) {
 	return x;
 }
 
-vector<complex<double>> fft(const vector<complex<double>> &X) {
+vector<complex<double>> fft_iter(const vector<complex<double>> &X) {
 	size_t size = 1;
 	while (size<X.size()) {
 		size <<= 1;
@@ -62,15 +61,5 @@ vector<complex<double>> fft(const vector<complex<double>> &X) {
 	}
 
 	return Y;
-}
-
-int main() {
-	vector<complex<double>> X{0, 1, 2, 3, 4, 5, 6, 7};
-	vector<complex<double>> Y1 = dft(X);
-	vector<complex<double>> Y2 = fft(X);
-
-	for (size_t i=0; i<Y1.size(); i++) {
-		cout << Y1[i] << " " << Y2[i] << endl;
-	}
 }
 #endif //FFT_ITER_INCLUDED
